@@ -16,6 +16,9 @@
 
     <properties>
         <java.version>11</java.version>
+        <junit.version>4.12</junit.version>
+        <spock-core.version>1.0-groovy-2.4</spock-core.version>
+        <groovy-all.version>2.4.4</groovy-all.version>
     </properties>
 
     <dependencies>
@@ -37,6 +40,24 @@
         <dependency>
             <groupId>org.springframework.restdocs</groupId>
             <artifactId>spring-restdocs-mockmvc</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.spockframework</groupId>
+            <artifactId>spock-core</artifactId>
+            <version>${spock-core.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.codehaus.groovy</groupId>
+            <artifactId>groovy-all</artifactId>
+            <version>${groovy-all.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
