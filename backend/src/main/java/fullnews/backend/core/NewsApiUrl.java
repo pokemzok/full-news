@@ -50,7 +50,7 @@ class NewsApiUrl {
         private static void notNullOrBlankUrl(String url) {
             if (url == null || url.isBlank()) {
                 throw new NewsApiUrlIsIncorrectException(
-                    "News api url is incorrect. Current url value is " + url
+                    "News api url is incorrect. Current url value is [" + url+"]"
                 );
             }
         }
@@ -58,7 +58,7 @@ class NewsApiUrl {
         private static void notNullOrBlankUrlParameter(String param, String paramName) {
             if (param == null || param.isBlank()) {
                 throw new NewsApiUrlParamIsIncorrectException(
-                        "News api url parameter is incorrect. Param " + paramName + " has value of: " + param,
+                        "News api url parameter is incorrect. Param " + paramName + " has value of [" + param+"]",
                         new Object[]{param, paramName}
                 );
             }

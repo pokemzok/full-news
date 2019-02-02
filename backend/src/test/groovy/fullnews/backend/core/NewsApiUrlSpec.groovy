@@ -1,6 +1,7 @@
 package fullnews.backend.core
 
 import fullnews.backend.api.newsapi.NewsApiUrlIsIncorrectException
+import fullnews.backend.api.newsapi.NewsApiUrlParamIsIncorrectException
 import spock.lang.Specification
 
 class NewsApiUrlSpec extends Specification {
@@ -26,11 +27,16 @@ class NewsApiUrlSpec extends Specification {
         def ex = thrown(expectedException)
         ex.getMessage() == message
         where:
-        apiConfig                  | country | technology | expectedException              | message
-        null                       | null    | null       | NullPointerException           | "apiConfiguration is marked @NonNull but is null"
-        new NewsApiConfiguration() | null    | null       | NullPointerException           | "country is marked @NonNull but is null"
-        new NewsApiConfiguration() | ""      | null       | NullPointerException           | "category is marked @NonNull but is null"
-        new NewsApiConfiguration() | ""      | ""         | NewsApiUrlIsIncorrectException | "News api url is incorrect. Current url value is null"
+        apiConfig                                                    | country | technology | expectedException                   | message
+        null                                                         | null    | null       | NullPointerException                | "apiConfiguration is marked @NonNull but is null"
+        new NewsApiConfiguration()                                   | null    | null       | NullPointerException                | "country is marked @NonNull but is null"
+        new NewsApiConfiguration()                                   | ""      | null       | NullPointerException                | "category is marked @NonNull but is null"
+        new NewsApiConfiguration()                                   | ""      | ""         | NewsApiUrlIsIncorrectException      | "News api url is incorrect. Current url value is [null]"
+        new NewsApiConfiguration(topHeadlinesUrl: "url")             | ""      | ""         | NewsApiUrlParamIsIncorrectException | "News api url parameter is incorrect. Param apiKey has value of [null]"
+        new NewsApiConfiguration(topHeadlinesUrl: "url", key: "key") | ""      | ""         | NewsApiUrlParamIsIncorrectException | "News api url parameter is incorrect. Param country has value of []"
+        new NewsApiConfiguration(topHeadlinesUrl: "url", key: "key") | " "     | ""         | NewsApiUrlParamIsIncorrectException | "News api url parameter is incorrect. Param country has value of [ ]"
+        new NewsApiConfiguration(topHeadlinesUrl: "url", key: "key") | "pl"    | ""         | NewsApiUrlParamIsIncorrectException | "News api url parameter is incorrect. Param category has value of []"
+        new NewsApiConfiguration(topHeadlinesUrl: "url", key: "key") | "pl"    | " "        | NewsApiUrlParamIsIncorrectException | "News api url parameter is incorrect. Param category has value of [ ]"
     }
 
 }
