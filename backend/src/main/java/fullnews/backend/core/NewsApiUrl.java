@@ -25,14 +25,14 @@ class NewsApiUrl {
         NewsApiUrlPreconditions.check(this);
         return apiConfiguration.getTopHeadlinesUrl()
                 .concat("?")
-                .concat(createRequiredParamString(API_KEY_PARAM, apiConfiguration.getKey()))
+                .concat(createRequiredUrlParam(API_KEY_PARAM, apiConfiguration.getKey()))
                 .concat("&")
-                .concat(createRequiredParamString(COUNTRY_PARAM, this.country))
+                .concat(createRequiredUrlParam(COUNTRY_PARAM, this.country))
                 .concat("&")
-                .concat(createRequiredParamString(CATEGORY_PARAM, this.category));
+                .concat(createRequiredUrlParam(CATEGORY_PARAM, this.category));
     }
 
-    private String createRequiredParamString(String paramName, String paramValue) {
+    private String createRequiredUrlParam(String paramName, String paramValue) {
         return paramName
                 .concat("=")
                 .concat(paramValue);

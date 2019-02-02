@@ -7,8 +7,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.ArrayList;
-
 @Service
 @RequiredArgsConstructor
 public class NewsService {
@@ -16,12 +14,13 @@ public class NewsService {
     private final NewsApiConfiguration newsApiConfiguration;
 
     public NewsResponse getNews(@NonNull String country, @NonNull String category) {
-        var newsResponse = new NewsResponse(country, category, new ArrayList<>());
-
-        var restTemplate = new RestTemplate();
-        var responseEntity = restTemplate.getForEntity(newsApiUrl(country, category), NewsApiResponse.class);
-
-        return newsResponse;
+        var responseEntity = new RestTemplate().getForEntity(newsApiUrl(country, category), NewsApiResponse.class);
+        // FIXME check response status in response entity
+        return new NewsResponseBuilder()
+                .apiResponse(responseEntity.getBody())
+                .category(category)
+                .country(country)
+                .build();
     }
 
     private String newsApiUrl(String country, String category) {

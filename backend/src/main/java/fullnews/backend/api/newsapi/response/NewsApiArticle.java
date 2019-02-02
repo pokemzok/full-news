@@ -4,6 +4,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.ZonedDateTime;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -15,7 +17,7 @@ public class NewsApiArticle {
         private String description;
         private String url;
         private String urlToImage;
-        private String publishedAt;
+        private ZonedDateTime publishedAt;
         private String content;
 
 }
