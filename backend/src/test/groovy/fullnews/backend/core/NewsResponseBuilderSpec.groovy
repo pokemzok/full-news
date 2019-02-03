@@ -1,6 +1,6 @@
 package fullnews.backend.core
 
-import com.fasterxml.jackson.databind.ObjectMapper
+
 import fullnews.backend.api.Article
 import fullnews.backend.api.NewsResponse
 import fullnews.backend.api.newsapi.response.NewsApiArticle
@@ -10,8 +10,6 @@ import spock.lang.Specification
 import java.time.LocalDate
 
 class NewsResponseBuilderSpec extends Specification {
-
-    private static final ObjectMapper mapper = new ObjectMapper()
 
     def "should correctly build news response from api response and path parameters"() {
         given:
@@ -25,7 +23,7 @@ class NewsResponseBuilderSpec extends Specification {
                 .category(category)
                 .build()
         then:
-        toJsonString(response) == toJsonString(new NewsResponse(
+        new JsonObject(response).toString() == new JsonObject(new NewsResponse(
                 country: country,
                 category: category,
                 articles: List.of(
@@ -48,7 +46,7 @@ class NewsResponseBuilderSpec extends Specification {
                                 imageUrl: "https://nesncom.files.wordpress.com/2019/02/james-white-tom-brady.jpg"
                         )
                 )
-        ))
+        )).toString()
     }
 
     def "should correctly build news response for incomplete data"() {
@@ -59,17 +57,14 @@ class NewsResponseBuilderSpec extends Specification {
                 .apiResponse(newsApiResponse)
                 .build()
         then:
-        toJsonString(response) == expectedResponse
+        new JsonObject(response).toString() == expectedResponse
         where:
         country | category | newsApiResponse                                                    | expectedResponse
-        null    | null     | null                                                               | toJsonString(new NewsResponse(null, null, new ArrayList<Article>()))
-        null    | null     | new NewsApiResponse()                                              | toJsonString(new NewsResponse(null, null, new ArrayList<Article>()))
-        null    | null     | new NewsApiResponse()                                              | toJsonString(new NewsResponse(null, null, new ArrayList<Article>()))
-        null    | null     | new NewsApiResponse(articles: Arrays.asList(new NewsApiArticle())) | toJsonString(new NewsResponse(null, null, Arrays.asList(new Article())))
+        null    | null     | null                                                               | new JsonObject(new NewsResponse(null, null, new ArrayList<Article>())).toString()
+        null    | null     | new NewsApiResponse()                                              | new JsonObject(new NewsResponse(null, null, new ArrayList<Article>())).toString()
+        null    | null     | new NewsApiResponse()                                              | new JsonObject(new NewsResponse(null, null, new ArrayList<Article>())).toString()
+        null    | null     | new NewsApiResponse(articles: Arrays.asList(new NewsApiArticle())) | new JsonObject(new NewsResponse(null, null, Arrays.asList(new Article()))).toString()
     }
 
-    private String toJsonString(NewsResponse newsResponse) {
-        return mapper.writeValueAsString(newsResponse)
-    }
 }
 
