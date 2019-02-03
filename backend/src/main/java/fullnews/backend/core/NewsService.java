@@ -15,7 +15,6 @@ public class NewsService {
 
     public NewsResponse getNews(@NonNull String country, @NonNull String category) {
         var responseEntity = new RestTemplate().getForEntity(newsApiUrl(country, category), NewsApiResponse.class);
-        // FIXME check response status in response entity
         return new NewsResponseBuilder()
                 .apiResponse(responseEntity.getBody())
                 .category(category)

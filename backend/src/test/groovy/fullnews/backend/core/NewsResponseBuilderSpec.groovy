@@ -3,6 +3,8 @@ package fullnews.backend.core
 import com.fasterxml.jackson.databind.ObjectMapper
 import fullnews.backend.api.Article
 import fullnews.backend.api.NewsResponse
+import fullnews.backend.api.newsapi.response.NewsApiArticle
+import fullnews.backend.api.newsapi.response.NewsApiResponse
 import spock.lang.Specification
 
 import java.time.LocalDate
@@ -49,7 +51,24 @@ class NewsResponseBuilderSpec extends Specification {
         ))
     }
 
-    private String toJsonString(NewsResponse newsResponse){
+    def "should correctly build news response for incomplete data"() {
+        when:
+        def response = new NewsResponseBuilder()
+                .country(country)
+                .category(category)
+                .apiResponse(newsApiResponse)
+                .build()
+        then:
+        toJsonString(response) == expectedResponse
+        where:
+        country | category | newsApiResponse                                                    | expectedResponse
+        null    | null     | null                                                               | toJsonString(new NewsResponse(null, null, new ArrayList<Article>()))
+        null    | null     | new NewsApiResponse()                                              | toJsonString(new NewsResponse(null, null, new ArrayList<Article>()))
+        null    | null     | new NewsApiResponse()                                              | toJsonString(new NewsResponse(null, null, new ArrayList<Article>()))
+        null    | null     | new NewsApiResponse(articles: Arrays.asList(new NewsApiArticle())) | toJsonString(new NewsResponse(null, null, Arrays.asList(new Article())))
+    }
+
+    private String toJsonString(NewsResponse newsResponse) {
         return mapper.writeValueAsString(newsResponse)
     }
 }
