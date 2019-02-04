@@ -1,14 +1,14 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
-import {AppComponent} from './app.component';
+import {NewsComponent} from './news/news.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MaterialModule} from './material-module';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
-import {NewsTopicsService} from './news-topics.service';
-import {NewsService} from './news.service';
+import {NewsTopicsService} from './news/news-topics.service';
+import {NewsService} from './news/news.service';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -16,7 +16,7 @@ export function createTranslateLoader(http: HttpClient) {
 
 @NgModule({
   declarations: [
-    AppComponent
+    NewsComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +32,7 @@ export function createTranslateLoader(http: HttpClient) {
     }),
   ],
   providers: [TranslateService, NewsTopicsService, NewsService],
-  bootstrap: [AppComponent]
+  bootstrap: [NewsComponent]
 })
 export class AppModule {
 

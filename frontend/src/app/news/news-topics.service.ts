@@ -1,4 +1,4 @@
-import {Tuple} from './common/tuple';
+import {Tuple} from '../common/tuple';
 import {Injectable} from '@angular/core';
 
 @Injectable()

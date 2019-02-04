@@ -1,15 +1,15 @@
 import {MediaMatcher} from '@angular/cdk/layout';
 import {ChangeDetectorRef, Component, OnDestroy} from '@angular/core';
 import {NewsTopicsService} from './news-topics.service';
-import {Tuple} from './common/tuple';
+import {Tuple} from '../common/tuple';
 import {NewsService} from './news.service';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  templateUrl: './news.component.html',
+  styleUrls: ['./news.component.scss']
 })
-export class AppComponent implements OnDestroy {
+export class NewsComponent implements OnDestroy {
   private readonly mobileQueryListener: () => void;
   mobileQuery: MediaQueryList;
   categories: Array<Tuple<string>>;
@@ -22,6 +22,7 @@ export class AppComponent implements OnDestroy {
        cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.`);
 
   // FIXME navbar always present for width = 1200 px
+  // FIXME first navbar category is hiding on smaller screen
   constructor(
     changeDetectorRef: ChangeDetectorRef,
     media: MediaMatcher,
