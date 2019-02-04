@@ -13,7 +13,7 @@
     </mat-sidenav>
 
     <mat-sidenav-content>
-      <p *ngFor="let article of articles">{{article}}</p>
+      <div *ngFor="let article of articles"><app-article [article] ="article"></app-article></div>
     </mat-sidenav-content>
   </mat-sidenav-container>
 </div>

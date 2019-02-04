@@ -3,6 +3,7 @@ import {ChangeDetectorRef, Component, OnDestroy} from '@angular/core';
 import {NewsTopicsService} from './news-topics.service';
 import {Tuple} from '../common/tuple';
 import {NewsService} from './news.service';
+import {Article} from './article/article';
 
 @Component({
   selector: 'app-root',
@@ -14,15 +15,11 @@ export class NewsComponent implements OnDestroy {
   mobileQuery: MediaQueryList;
   categories: Array<Tuple<string>>;
 
-  articles = Array.from({length: 50}, () =>
-    `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-       labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-       laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-       voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-       cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.`);
+  articles: Array<Article>;
 
   // FIXME navbar always present for width = 1200 px
   // FIXME first navbar category is hiding on smaller screen
+  // FIXME article is hiding under toolbar on smaller screen
   constructor(
     changeDetectorRef: ChangeDetectorRef,
     media: MediaMatcher,
@@ -33,7 +30,7 @@ export class NewsComponent implements OnDestroy {
     this.mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addEventListener('screenResize', this.mobileQueryListener);
     this.categories = newsTopicsService.getTopics(); // FIXME make selected category shine (background color change)
-    newsService.getNews('technology', 'pl')
+    newsService.getNews('technology', 'pl') // FIXME change country and category on select
       .subscribe(response => this.articles = response.articles); // FIXME test in erroneus conditions
   }
 
