@@ -1,0 +1,35 @@
+.article-container {
+  display: flex;
+  border: 2px solid #ccc;
+  padding: 15px;
+  margin: 10px;
+  border-radius: 16px;
+}
+
+.image-container {
+
+  padding-right: 15px;
+  flex: 25%;
+  img {
+    max-height: 100%;
+    max-width: 100%;
+  }
+}
+
+.information-container {
+  flex: 75%;
+
+  a{
+    text-decoration: none;
+    color:#4a148c;
+    &:visited{
+      color:#7e57c2;
+    }
+  }
+}
+
+.information-header {
+  p{
+    color: #6c757d;
+  }
+}

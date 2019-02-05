@@ -3,5 +3,10 @@
   "topics": {
     "technology": "Technologia",
     "sport": "Sport"
+  },
+  "label":{
+    "source": "Przejdź do źródła",
+    "articleDate" : "Data publikacji:",
+    "author": "Autor:"
   }
 }

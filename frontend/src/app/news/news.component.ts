@@ -14,7 +14,6 @@ export class NewsComponent implements OnDestroy {
   private readonly mobileQueryListener: () => void;
   mobileQuery: MediaQueryList;
   categories: Array<Tuple<string>>;
-
   articles: Array<Article>;
 
   // FIXME navbar always present for width = 1200 px
@@ -31,7 +30,7 @@ export class NewsComponent implements OnDestroy {
     this.mobileQuery.addEventListener('screenResize', this.mobileQueryListener);
     this.categories = newsTopicsService.getTopics(); // FIXME make selected category shine (background color change)
     newsService.getNews('technology', 'pl') // FIXME change country and category on select
-      .subscribe(response => this.articles = response.articles); // FIXME test in erroneus conditions
+      .subscribe(response => this.articles = response.articles);
   }
 
   ngOnDestroy(): void {

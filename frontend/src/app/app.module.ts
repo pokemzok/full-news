@@ -9,7 +9,7 @@ import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {NewsTopicsService} from './news/news-topics.service';
 import {NewsService} from './news/news.service';
-import { ArticleComponent } from './news/article/article.component';
+import {ArticleComponent} from './news/article/article.component';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -31,7 +31,7 @@ export function createTranslateLoader(http: HttpClient) {
         useFactory: (createTranslateLoader),
         deps: [HttpClient]
       }
-    }),
+    })
   ],
   providers: [TranslateService, NewsTopicsService, NewsService],
   bootstrap: [NewsComponent]

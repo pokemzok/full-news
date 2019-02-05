@@ -1,9 +1,15 @@
-<p>
-  {{article.author}}
-  {{article.title}}
-  {{article.description}}
-  {{article.date}}
-  {{article.sourceName}}
-  {{article.articleUrl}}
-  {{article.imageUrl}}
-</p>
+<div class="article-container">
+  <div class="image-container">
+    <a [href]="article.articleUrl"><img [src]="article.imageUrl"/></a>
+  </div>
+  <div class="information-container">
+    <div class="information-header">
+      <p>{{'label.author' | translate}} {{article.author}}</p>
+      <p>{{'label.articleDate' | translate}} {{article.date}}</p>
+    </div>
+    <div>
+      <h2><a [href]="article.articleUrl">{{article.title}}</a></h2>
+    </div>
+    <p>{{article.description}}</p>
+  </div>
+</div>
