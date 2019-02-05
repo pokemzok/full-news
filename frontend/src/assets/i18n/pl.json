@@ -2,7 +2,12 @@
   "appName": "Full News",
   "topics": {
     "technology": "Technologia",
-    "sport": "Sport"
+    "sport": "Sport",
+    "business" : "Biznes",
+    "entertainment": "Rozrywka",
+    "general" : "Ogólne",
+    "health" : "Zdrowie",
+    "science" : "Nauka"
   },
   "label":{
     "source": "Przejdź do źródła",

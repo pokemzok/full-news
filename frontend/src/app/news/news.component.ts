@@ -1,9 +1,10 @@
 import {MediaMatcher} from '@angular/cdk/layout';
 import {ChangeDetectorRef, Component, OnDestroy} from '@angular/core';
-import {NewsTopicsService} from './news-topics.service';
+import {NewsCategoryService} from './news-category.service';
 import {Tuple} from '../common/tuple';
 import {NewsService} from './news.service';
 import {Article} from './article/article';
+import {NEWS_COUNTRY} from '../../environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -22,19 +23,22 @@ export class NewsComponent implements OnDestroy {
   constructor(
     changeDetectorRef: ChangeDetectorRef,
     media: MediaMatcher,
-    newsTopicsService: NewsTopicsService,
-    newsService: NewsService
+    newsTopicsService: NewsCategoryService,
+    private newsService: NewsService
   ) {
     this.mobileQuery = media.matchMedia('(max-width: 768px)');
     this.mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addEventListener('screenResize', this.mobileQueryListener);
-    this.categories = newsTopicsService.getTopics(); // FIXME make selected category shine (background color change)
-    newsService.getNews('technology', 'pl') // FIXME change country and category on select
-      .subscribe(response => this.articles = response.articles);
+    this.categories = newsTopicsService.getCategories(); // FIXME make selected category shine (background color change)
+    this.selectCategory(newsTopicsService.getTechnologyCategory().key);
   }
 
   ngOnDestroy(): void {
     this.mobileQuery.removeEventListener('screenResize', this.mobileQueryListener);
   }
 
+  selectCategory(key: string) {
+    this.newsService.getNews(key, NEWS_COUNTRY)
+      .subscribe(response => this.articles = response.articles);
+  }
 }

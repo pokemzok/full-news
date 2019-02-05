@@ -7,7 +7,7 @@ import {MaterialModule} from './material-module';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
-import {NewsTopicsService} from './news/news-topics.service';
+import {NewsCategoryService} from './news/news-category.service';
 import {NewsService} from './news/news.service';
 import {ArticleComponent} from './news/article/article.component';
 
@@ -33,7 +33,7 @@ export function createTranslateLoader(http: HttpClient) {
       }
     })
   ],
-  providers: [TranslateService, NewsTopicsService, NewsService],
+  providers: [TranslateService, NewsCategoryService, NewsService],
   bootstrap: [NewsComponent]
 })
 export class AppModule {
