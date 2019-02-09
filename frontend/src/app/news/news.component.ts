@@ -18,9 +18,6 @@ export class NewsComponent implements OnDestroy {
   articles: Array<Article>;
 
   // FIXME navbar always present for width = 1200 px
-  // FIXME first navbar category is hiding on smaller screen
-  // FIXME article is hiding under toolbar on smaller screen
-  // FIXME toolbar should hide on smaller screen (?)
   constructor(
     changeDetectorRef: ChangeDetectorRef,
     media: MediaMatcher,
