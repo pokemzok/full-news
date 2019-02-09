@@ -17,14 +17,13 @@ export class NewsComponent implements OnDestroy {
   categories: Array<Tuple<string>>;
   articles: Array<Article>;
 
-  // FIXME navbar always present for width = 1200 px
   constructor(
     changeDetectorRef: ChangeDetectorRef,
     media: MediaMatcher,
     newsTopicsService: NewsCategoryService,
     private newsService: NewsService
   ) {
-    this.mobileQuery = media.matchMedia('(max-width: 768px)');
+    this.mobileQuery = media.matchMedia('(max-width: 1200px)');
     this.mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addEventListener('screenResize', this.mobileQueryListener);
     this.categories = newsTopicsService.getCategories(); // FIXME make selected category shine (background color change)

@@ -7,9 +7,8 @@
   </mat-toolbar>
 
   <mat-sidenav-container class="sidenav-container">
-    <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'"
-                 [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
-      <mat-nav-list>
+    <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'">
+      <mat-nav-list class="padding-fix">
         <a mat-list-item routerLink="." *ngFor="let category of categories" (click)="selectCategory(category.key)">
           {{category.value | translate}}
         </a>
