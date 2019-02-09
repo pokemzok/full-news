@@ -1,31 +1,36 @@
-import { TestBed, async } from '@angular/core/testing';
-import { NewsComponent } from './news.component';
+import {async, TestBed} from '@angular/core/testing';
+import {NewsComponent} from './news.component';
+import {ArticleComponent} from './article/article.component';
+import {MockComponent, MockModule} from 'ng-mocks';
+import {HttpClientModule} from '@angular/common/http';
+import {ActivatedRoute} from '@angular/router';
+import { of} from 'rxjs';
 
-describe('NewsComponent', () => {
+
+describe('NewsComponent tests', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [
-        NewsComponent
+      imports: [
+        MockModule(HttpClientModule)
       ],
-    }).compileComponents();
+      declarations: [
+        NewsComponent, MockComponent(ArticleComponent)
+      ],
+      providers: [
+        {
+          provide: ActivatedRoute,
+          useValue: {
+            paramMap: of({category: 'technology'})
+          }
+        }
+      ]
+    });
   }));
 
-  it('should create the app', () => {
+  it('should create news component', () => {
     const fixture = TestBed.createComponent(NewsComponent);
     const app = fixture.debugElement.componentInstance;
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'Full News Frontend'`, () => {
-    const fixture = TestBed.createComponent(NewsComponent);
-    const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('Full News Frontend');
-  });
-
-  it('should render title in a h1 tag', () => {
-    const fixture = TestBed.createComponent(NewsComponent);
-    fixture.detectChanges();
-    const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('Welcome to Full News Frontend!');
-  });
 });
