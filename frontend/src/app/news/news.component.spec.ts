@@ -1,13 +1,17 @@
-import {async, TestBed} from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {NewsComponent} from './news.component';
 import {ArticleComponent} from './article/article.component';
 import {MockComponent, MockModule} from 'ng-mocks';
-import {HttpClientModule} from '@angular/common/http';
+import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {ActivatedRoute} from '@angular/router';
-import { of} from 'rxjs';
+import {of} from 'rxjs';
 
 
 describe('NewsComponent tests', () => {
+
+  let component: NewsComponent;
+  let fixture: ComponentFixture<NewsComponent>;
+
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
@@ -20,17 +24,41 @@ describe('NewsComponent tests', () => {
         {
           provide: ActivatedRoute,
           useValue: {
-            paramMap: of({category: 'technology'})
+            paramMap: of({
+              get: function get() {
+                return 'technology';
+              }
+            })
+          }
+        },
+        {
+          provide: HttpClient,
+          useValue: {
+            get: function get() {
+              return of(
+                {
+                  country: 'pl',
+                  category: 'technology',
+                  articles: []
+                }
+              );
+            }
           }
         }
       ]
     });
   }));
 
-  it('should create news component', () => {
-    const fixture = TestBed.createComponent(NewsComponent);
-    const app = fixture.debugElement.componentInstance;
-    expect(app).toBeTruthy();
+  beforeEach(() => {
+    fixture = TestBed.createComponent(NewsComponent);
+    component = fixture.debugElement.componentInstance;
   });
 
+  it('should create news component', () => {
+    expect(component).toBeTruthy();
+  });
+
+  it('should get an empty array of articles from service', () => {
+    expect(component.articles).toEqual([]);
+  });
 });
