@@ -13,7 +13,6 @@ export class ArticleComponent implements OnInit {
   constructor() {
   }
 
-  // FIXME change layout when it is too small (picture should be on top)
   ngOnInit() {
   }
 
