@@ -10,8 +10,8 @@
     "science" : "Nauka"
   },
   "label":{
-    "source": "Przejdź do źródła",
     "articleDate" : "Data publikacji:",
-    "author": "Autor:"
+    "author": "Autor:",
+    "sourceName": "Źródło:"
   }
 }
