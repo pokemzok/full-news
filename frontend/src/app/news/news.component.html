@@ -1,25 +1,3 @@
-<div class="container" >
-  <mat-toolbar color="primary" class="toolbar">
-    <button mat-icon-button (click)="snav.toggle()">
-      <mat-icon>menu</mat-icon>
-    </button>
-    <h1 class="app-name">{{'appName' | translate}}</h1>
-  </mat-toolbar>
-
-  <mat-sidenav-container class="sidenav-container">
-    <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'">
-      <mat-nav-list class="padding-fix">
-        <a mat-list-item routerLink="/{{category.key}}" routerLinkActive="active" *ngFor="let category of categories" (click)="selectCategory(category.key)">
-          {{category.value | translate}}
-        </a>
-      </mat-nav-list>
-    </mat-sidenav>
-
-    <mat-sidenav-content>
-      <div *ngFor="let article of articles">
-        <app-article [article]="article"></app-article>
-      </div>
-    </mat-sidenav-content>
-  </mat-sidenav-container>
+<div *ngFor="let article of articles">
+  <app-article [article]="article"></app-article>
 </div>
-

@@ -1,8 +1,9 @@
-import {Tuple} from '../common/tuple';
+import {Tuple} from './tuple';
+
 
 export class NewsCategoryFactory {
 
-  static categories(): Array<Tuple<string>> {
+   createCategories(): Array<Tuple<string>> {
     return [
       new Tuple<string>('business', 'topics.business'),
       new Tuple<string>('entertainment', 'topics.entertainment'),
@@ -14,7 +15,5 @@ export class NewsCategoryFactory {
     ];
   }
 
-  static mainCategory(): Tuple<string> {
-    return new Tuple<string>('technology', 'topics.technology');
-  }
+
 }
