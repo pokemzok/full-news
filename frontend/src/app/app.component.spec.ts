@@ -13,7 +13,7 @@ describe('AppComponent tests', () => {
       imports: [
         MaterialModule,
         MockModule(TranslateModule),
-        RouterModule.forRoot([]),
+        MockModule(RouterModule),
         NoopAnimationsModule
       ],
       declarations: [
