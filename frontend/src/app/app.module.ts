@@ -1,15 +1,16 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
-import {TranslateService} from '@ngx-translate/core';
+import {TranslateLoader, TranslateModule, TranslateService} from '@ngx-translate/core';
 import {NewsComponent} from './news/news.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MaterialModule} from './material-module';
-import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
-import {NewsCategoryService} from './news/news-category.service';
 import {NewsService} from './news/news.service';
 import {ArticleComponent} from './news/article/article.component';
+import {RouterModule} from '@angular/router';
+import {AppRoutesFactory} from './app.routes.factory';
+import { AppComponent } from './app.component';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -18,7 +19,8 @@ export function createTranslateLoader(http: HttpClient) {
 @NgModule({
   declarations: [
     NewsComponent,
-    ArticleComponent
+    ArticleComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -31,10 +33,13 @@ export function createTranslateLoader(http: HttpClient) {
         useFactory: (createTranslateLoader),
         deps: [HttpClient]
       }
-    })
+    }),
+    RouterModule.forRoot(
+      new AppRoutesFactory().routes()
+    )
   ],
-  providers: [TranslateService, NewsCategoryService, NewsService],
-  bootstrap: [NewsComponent]
+  providers: [TranslateService, NewsService],
+  bootstrap: [AppComponent]
 })
 export class AppModule {
 

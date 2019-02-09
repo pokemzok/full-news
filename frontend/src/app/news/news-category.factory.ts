@@ -1,10 +1,8 @@
 import {Tuple} from '../common/tuple';
-import {Injectable} from '@angular/core';
 
-@Injectable()
-export class NewsCategoryService {
+export class NewsCategoryFactory {
 
-  getCategories(): Array<Tuple<string>> {
+  static categories(): Array<Tuple<string>> {
     return [
       new Tuple<string>('business', 'topics.business'),
       new Tuple<string>('entertainment', 'topics.entertainment'),
@@ -16,7 +14,7 @@ export class NewsCategoryService {
     ];
   }
 
-  getTechnologyCategory(): Tuple<string> {
+  static mainCategory(): Tuple<string> {
     return new Tuple<string>('technology', 'topics.technology');
   }
 }
