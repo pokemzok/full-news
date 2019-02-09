@@ -7,7 +7,8 @@ import {ActivatedRoute} from '@angular/router';
 @Component({
   selector: 'app-news',
   templateUrl: './news.component.html',
-  styleUrls: ['./news.component.scss']
+  styleUrls: ['./news.component.scss'],
+  providers: [NewsService]
 })
 export class NewsComponent {
   articles: Array<Article>;

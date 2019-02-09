@@ -6,10 +6,9 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MaterialModule} from './material-module';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
-import {NewsService} from './news/news.service';
 import {ArticleComponent} from './news/article/article.component';
 import {RouterModule, Routes} from '@angular/router';
-import { AppComponent } from './app.component';
+import {AppComponent} from './app.component';
 
 
 const ROUTES: Routes = [
@@ -44,7 +43,7 @@ export function createTranslateLoader(http: HttpClient) {
       ROUTES
     )
   ],
-  providers: [TranslateService, NewsService],
+  providers: [TranslateService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
