@@ -9,6 +9,7 @@ import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {ArticleComponent} from './news/article/article.component';
 import {RouterModule, Routes} from '@angular/router';
 import {AppComponent} from './app.component';
+import {HashLocationStrategy, LocationStrategy} from "@angular/common";
 
 
 const ROUTES: Routes = [
@@ -43,7 +44,7 @@ export function createTranslateLoader(http: HttpClient) {
       ROUTES
     )
   ],
-  providers: [TranslateService],
+  providers: [TranslateService ,{ provide: LocationStrategy, useClass: HashLocationStrategy }],
   bootstrap: [AppComponent]
 })
 export class AppModule {
