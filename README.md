@@ -5,7 +5,7 @@ Simple application which lets you stay in touch with news.
 1. Spring-Boot 2 backend
 2. Angular 7 frontend
 3. Karma and Spock tests
-4. News API integration example
+4. [News API](https://newsapi.org) integration example
 5. Swagger 2 documentation generation
 6. Responsive Web Design 
 7. SCSS usage example
