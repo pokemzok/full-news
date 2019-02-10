@@ -5,6 +5,7 @@ News application
 * Java 11
 * Maven 3.6.0
 * Docker (running)
+* Google Chrome (version 59+)
 
 # How to build
 1. Pull the project  

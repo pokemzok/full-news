@@ -63,6 +63,16 @@
             </configuration>
             <phase>generate-resources</phase>
           </execution>
+          <execution>
+            <id>javascript tests</id>
+            <goals>
+              <goal>npm</goal>
+            </goals>
+            <phase>test</phase>
+            <configuration>
+              <arguments>run-script build-test</arguments>
+            </configuration>
+          </execution>
         </executions>
       </plugin>
     </plugins>
