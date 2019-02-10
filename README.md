@@ -10,6 +10,7 @@ Simple application which lets you stay in touch with news.
 6. Responsive Web Design 
 7. SCSS usage example
 8. Advanced maven configuration which includes building and testing Angular application, docker image creation, merging frontend and backend into one singe spring-boot jar
+9. Java 11
 
 # Prerequisites 
 * Java 11
