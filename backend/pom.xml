@@ -18,7 +18,7 @@
     <properties>
         <java.version>11</java.version>
         <spock-core.version>1.2-groovy-2.5</spock-core.version>
-        <groovy-all.version>2.5.3</groovy-all.version>
+        <groovy-all.version>2.5.5</groovy-all.version>
         <byte-buddy.version>1.9.6</byte-buddy.version>
     </properties>
 
