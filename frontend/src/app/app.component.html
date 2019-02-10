@@ -9,7 +9,7 @@
   <mat-sidenav-container class="sidenav-container">
     <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'">
       <mat-nav-list class="padding-fix">
-        <a mat-list-item routerLink="{{category.key}}" routerLinkActive="active" *ngFor="let category of categories" (click)="selectCategory(category.key)">
+        <a mat-list-item routerLink="{{category.key}}" routerLinkActive="active" *ngFor="let category of categories" >
           {{category.value | translate}}
         </a>
       </mat-nav-list>
