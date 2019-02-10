@@ -73,7 +73,7 @@
                 <version>1.4.10</version>
                 <executions>
                     <execution>
-                        <id>default</id>
+                        <id>create-image</id>
                         <goals>
                             <goal>build</goal>
                         </goals>

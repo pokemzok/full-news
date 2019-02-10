@@ -10,3 +10,5 @@ newsapi.key=YOUR-API-KEY
 ```
 
 docker run -p 8080:8080/tcp 718ad051d819
+
+maven 3.6.0
