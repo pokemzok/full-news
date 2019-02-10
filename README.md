@@ -21,6 +21,7 @@ Simple application which lets you stay in touch with news.
 * Maven 3.6.0
 * Docker (running)
 * Google Chrome (version 59+)
+* Fully tested on windows 10. Use other systems at your own risk.
 
 # How to build
 1. Pull the project  
