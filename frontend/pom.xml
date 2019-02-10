@@ -64,13 +64,13 @@
             <phase>generate-resources</phase>
           </execution>
           <execution>
-            <id>javascript tests</id>
+            <id>Angular tests</id>
             <goals>
               <goal>npm</goal>
             </goals>
             <phase>test</phase>
             <configuration>
-              <arguments>run-script build-test</arguments>
+              <arguments>run-script test</arguments>
             </configuration>
           </execution>
         </executions>
