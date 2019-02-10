@@ -1,6 +1,10 @@
 # Full News
 Simple application which lets you stay in touch with news.
 
+<p align="center">
+    <img alt="start" src="https://github.com/pokemzok/full-news/blob/master/readme-images/overview.gif" />
+</p>  
+
 # What can you find in this application
 1. Spring-Boot 2 backend
 2. Angular 7 frontend
