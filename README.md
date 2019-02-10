@@ -20,7 +20,7 @@ Simple application which lets you stay in touch with news.
 # How to build
 1. Pull the project  
 2. Create news-api-key.properties file in the backend\resources location.
-3. Add newsapi.key property with your api-key to your news-api-key.properties files. It should look something like this
+3. Add newsapi.key property with your [api-key](https://newsapi.org) to your news-api-key.properties files. It should look something like this
     ```
     newsapi.key=YOUR-API-KEY
     ```
