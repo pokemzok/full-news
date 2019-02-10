@@ -20,6 +20,7 @@
         <spock-core.version>1.2-groovy-2.5</spock-core.version>
         <groovy-all.version>2.5.5</groovy-all.version>
         <byte-buddy.version>1.9.6</byte-buddy.version>
+        <springfox-swagger2.version>2.9.2</springfox-swagger2.version>
     </properties>
 
     <dependencies>
@@ -66,7 +67,16 @@
             <artifactId>byte-buddy</artifactId>
             <version>${byte-buddy.version}</version>
         </dependency>
-
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <version>${springfox-swagger2.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+            <version>${springfox-swagger2.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
