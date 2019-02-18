@@ -62,3 +62,7 @@ Simple application which lets you stay in touch with news.
 
 # API Documentation
 After successful application launch visit [swagger page](http://localhost:8080/swagger-ui.html) to see more information about application REST API.
+
+# TODO
+1. Security issues in the class NewsApiUrl.
+2. app.component.html - change string interpolation in routerLink
