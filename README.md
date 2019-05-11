@@ -1,6 +1,10 @@
 # Full News
 Simple application which lets you stay in touch with news.
 
+<p align="center">
+    <img alt="start" src="https://github.com/pokemzok/full-news/blob/master/readme-images/overview.gif" />
+</p>  
+
 # What can you find in this application
 1. Spring-Boot 2 backend
 2. Angular 7 frontend
@@ -17,10 +21,11 @@ Simple application which lets you stay in touch with news.
 * Maven 3.6.0
 * Docker (running)
 * Google Chrome (version 59+)
+* Fully tested on windows 10. Use other systems at your own risk.
 
 # How to build
 1. Pull the project  
-2. Create news-api-key.properties file in the backend\resources location.
+2. Create news-api-key.properties file in the backend\src\main\resources location.
 3. Add newsapi.key property with your [api-key](https://newsapi.org) to your news-api-key.properties files. It should look something like this
     ```
     newsapi.key=YOUR-API-KEY
@@ -57,3 +62,7 @@ Simple application which lets you stay in touch with news.
 
 # API Documentation
 After successful application launch visit [swagger page](http://localhost:8080/swagger-ui.html) to see more information about application REST API.
+
+# TODO
+1. Security issues in the class NewsApiUrl.
+2. app.component.html - change string interpolation in routerLink
