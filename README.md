@@ -1,4 +1,4 @@
-# Full News
+# Full News  [![Build Status](https://dev.azure.com/pokemzok/pokemzok/_apis/build/status/pokemzok.full-news?branchName=master)](https://dev.azure.com/pokemzok/pokemzok/_build/latest?definitionId=4&branchName=master)
 Simple application which lets you stay in touch with news.
 
 <p align="center">
