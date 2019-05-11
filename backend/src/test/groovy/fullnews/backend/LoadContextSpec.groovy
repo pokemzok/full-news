@@ -1,13 +1,14 @@
 package fullnews.backend
 
 import fullnews.backend.web.NewsController
+import org.springframework.test.annotation.IfProfileValue
 import org.springframework.test.context.ActiveProfiles
 import spock.lang.Specification
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
 
 @SpringBootTest
-@ActiveProfiles("integration-tests")
+@IfProfileValue(name="run.intregration.tests", value="true")
 class LoadContextSpec extends Specification {
 
     @Autowired(required = false)
